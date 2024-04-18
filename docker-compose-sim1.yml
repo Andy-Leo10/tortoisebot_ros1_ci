@@ -1,0 +1,51 @@
+# Create a Docker compose file to start up all 
+# the previous containers. This Docker Compose 
+# file will start the following systems:
+
+# - TortoiseBot Gazebo simulation
+# - Mapping nodes
+# - Waypoints Action Server
+# - Tortoisebot Webapp
+
+version: '3.7'
+services:
+    roscore_server:
+        hostname: roscore
+        image: osrf/ros:noetic-desktop-full
+        container_name: roscore_container
+        command: roscore
+        networks:
+            - ros-net
+
+    gazebo_server:
+        hostname: gazebo
+        # build:
+        #     context: .
+        #     dockerfile: tortoisebot-ros1-gazebo
+        image: andyleo10/andres.alamo-cp22:tortoisebot-ros1-gazebo
+        container_name: gazebo_container
+        environment:
+            - ROS_MASTER_URI=http://roscore_server:11311
+            - DISPLAY
+        volumes:
+            - /tmp/.X11-unix:/tmp/.X11-unix
+        networks:
+            - ros-net
+        command: /bin/bash -c "sleep 2 && source /opt/ros/noetic/setup.bash && source /catkin_ws/devel/setup.bash && roslaunch tortoisebot_gazebo tortoisebot_playground.launch"
+
+    waypoints_server:
+        hostname: waypoints
+        build:
+            context: .
+            dockerfile: tortoisebot-ros1-waypoints
+        # image: andyleo10/andres.alamo-cp22:tortoisebot-ros1-waypoints
+        container_name: waypoints_container
+        environment:
+            - ROS_MASTER_URI=http://roscore_server:11311
+        networks:
+            - ros-net
+        #command: /bin/bash -c "sleep 8 && source /opt/ros/noetic/setup.bash && source /catkin_ws/devel/setup.bash && rosrun tortoisebot_waypoints tortoisebot_action_server.py"
+        command: /bin/bash -c "sleep 8 && source /opt/ros/noetic/setup.bash && source /catkin_ws/devel/setup.bash && rostest --text tortoisebot_waypoints waypoints_test.test --reuse-master"
+
+networks:
+    ros-net:
