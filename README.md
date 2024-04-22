@@ -12,8 +12,9 @@
 ### DEMO
 <video controls>
   <source src="pictures/ros1-demo.mp4" type="video/mp4">
-Your browser does not support the video tag.
 </video>
+
+[To understand the usage, please review the Video](pictures/ros1-demo.mp4)
 
 Also you can create a Pull Request
 ![alt text](pictures/create-pr.png)
