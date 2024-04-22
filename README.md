@@ -33,4 +33,3 @@ for maintaining clean the works history
 java -jar jenkins-cli.jar -s http://localhost:8080/$SLOT_PREFIX/jenkins/ -auth @.jenkins_cli delete-builds ros1_auto <buildNumber>
 ```
 
-asdasd
