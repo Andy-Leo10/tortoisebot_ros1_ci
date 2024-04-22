@@ -1,5 +1,25 @@
 # tortoisebot ros1 ci
 
+- [tortoisebot ros1 ci](#tortoisebot-ros1-ci)
+  - [Run automation automatically](#run-automation-automatically)
+    - [DEMO](#demo)
+  - [Test docker part manually](#test-docker-part-manually)
+  - [Commands for running Jenkins manually](#commands-for-running-jenkins-manually)
+
+-------------------------------------------------
+
+## Run automation automatically
+### DEMO
+<video controls>
+  <source src="pictures/ros1-demo.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+
+Also you can create a Pull Request
+![alt text](pictures/create-pr.png)
+
+-------------------------------------------------
+
 ## Test docker part manually
 run **docker compose**
 ```
@@ -11,9 +31,7 @@ if you want to execute another thing
 sudo docker exec -it waypoints_container /bin/bash
 ```
 
-## Run automation automatically
-Please create a Pull Request
-![alt text](create-pr.png)
+-------------------------------------------------
 
 ## Commands for running Jenkins manually
 for checking the available jenkins commands 
