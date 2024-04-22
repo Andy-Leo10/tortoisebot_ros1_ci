@@ -11,7 +11,7 @@ if you want to execute another thing
 sudo docker exec -it waypoints_container /bin/bash
 ```
 
-## Commands for Jenkins
+## Commands for running Jenkins manually
 for checking the available jenkins commands 
 ```
 java -jar jenkins-cli.jar -s http://localhost:8080/$SLOT_PREFIX/jenkins/ -auth @.jenkins_cli help
