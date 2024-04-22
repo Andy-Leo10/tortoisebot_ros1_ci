@@ -1,6 +1,6 @@
 # tortoisebot ros1 ci
 
-## Test docker part
+## Test docker part manually
 run **docker compose**
 ```
 cd catkin_ws/src/ros1_ci/
@@ -10,6 +10,10 @@ if you want to execute another thing
 ```
 sudo docker exec -it waypoints_container /bin/bash
 ```
+
+## Run automation automatically
+Please create a Pull Request
+![alt text](create-pr.png)
 
 ## Commands for running Jenkins manually
 for checking the available jenkins commands 
